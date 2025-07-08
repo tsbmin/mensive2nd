@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 2nd Mensive 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right, #010162, #227c97, #0c94ce);
+      color: #ffffff;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .container {
+      min-height: 100vh;
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .container.active {
+      display: flex;
+    }
+    h1 {
+      font-family: 'Sacramento', cursive;
+      font-size: 3em;
+      color: #f0f0f0;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+    .btn {
+      background: #ef8e8e;
+      color: white;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: 0.3s ease;
+    }
+    .btn:hover {
+      background: #ea8f8f;
+    }
+    .hidden { display: none; }
+    img.sticker {
+      width: 180px;
+      animation: hugDance 3s ease-in-out infinite;
+      display: block;
+      margin-top: 20px;
+    }
+    @keyframes hugDance {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .fade-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .quiz {
+      margin-top: 30px;
+      text-align: left;
+      max-width: 600px;
+      width: 100%;
+      max-height: 400px;
+      overflow-y: auto;
+      padding-right: 10px;
+    }
+    .quiz::-webkit-scrollbar { width: 6px; }
+    .quiz::-webkit-scrollbar-thumb {
+      background-color: #ffffff50;
+      border-radius: 5px;
+    }
+    .quiz::-webkit-scrollbar-track { background: transparent; }
+    .question { font-weight: bold; margin: 15px 0 5px; }
+    .answer {
+      background: #e8f4fd;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .answer:hover { background: #2e2f2f; }
+    .answer.clicked {
+      animation: bounce 0.5s ease, glow 0.5s ease;
+    }
+    @keyframes bounce {
+      0%   { transform: scale(1); }
+      30%  { transform: scale(1.05); }
+      50%  { transform: scale(0.95); }
+      100% { transform: scale(1); }
+    }
+    @keyframes glow {
+      0%   { box-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+      50%  { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+      100% { box-shadow: 0 0 0px rgba(255, 255, 255, 0); }
+    }
+    textarea {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 30px;
+      border: 1px solid #ccc;
+    }
+    .comment-list {
+      margin-top: 20px;
+      background: #edf6fc;
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .comment-item {
+      margin-bottom: 10px;
+      background: #f7fbfe;
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    
+    .gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 120px); /* 3 kolom dengan lebar fix */
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 0 10px;
+}
+
+.gallery-grid img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <audio id="bgm" autoplay loop muted>
+    <source src="audio/bgm.mp3" type="audio/mpeg">
+  </audio>  <div class="container active" id="page1">
+    <h1> 2nd Month Anniversary </h1>
+    <div class="fade-wrapper">
+      <p class="fade-in" style="animation-delay: 0s;">Aku ngga tau kenapa kamu bisa semenyenangkan itu. 
+        Kadang emang nyebelin, kadang juga ngangenin. 
+        Tapi dua bulan ini jadi bukti kecil kalau kamu adalah hal besar yang patut aku syukuri.</p>
+      <p class="fade-in" style="animation-delay: 1s;">Makasih ya udah temenin hari-hari yang kadang ngga tentu arah ini. 
+        Rasanya aneh kalau sehari aja ngga ngobrol, ngga becanda, atau cuma sekadar saling gangguin.</p>
+      <p class="fade-in" style="animation-delay: 2s;">Kamu emang beda. Dan entah kenapa, itu bikin aku ngga pengen nyari yang lain.</p>
+    </div>
+    <img class="sticker" src="images/peluk.gif" alt="Sticker Pelukan">
+    <button class="btn" onclick="nextPage(2)">Lanjut</button>
+  </div>  
+ <div class="container" id="page2" style="overflow-y: auto;">
+  <h1>Aku & Kamu</h1>
+  <div class="gallery-grid">
+  <img src="images/pict2.jpg" alt="Foto 1" />
+  <img src="images/pict1.jpg" alt="Foto 2" />
+  <img src="images/pict3.jpg" alt="Foto 3" />
+  <img src="images/pict4.jpg" alt="Foto 4" />
+  <img src="images/pict5.jpg" alt="Foto 5" />
+  <img src="images/pict6.jpg" alt="Foto 6" />
+  <img src="images/pict7.jpg" alt="Foto 7" />
+  <img src="images/pict8.jpg" alt="Foto 8" />
+  <img src="images/pict9.jpg" alt="Foto 9" />
+  <img src="images/pict10.jpg" alt="Foto 10" />
+  <img src="images/pict11.jpg" alt="Foto 11" />
+  <img src="images/pict12.jpg" alt="Foto 12" />
+</div>
+  <button class="btn" onclick="nextPage(3)">Lanjut</button>
+</div>
+  <div class="container" id="page3">
+    <h1>Sedikit Kuis Tentang Kita</h1>
+    <div class="quiz">
+  <p class="question">1. Siapa yang lebih dulu manggil sayang?</p>
+  <div class="answer" onclick="alert('Yakinn?')">Emon</div>
+  <div class="answer" onclick="alert('Ah masa sih kamu?')">Morgan</div>
+  
+  <p class="question">2. Kalau bisa ulang satu momen kita, itu yang mana?</p>
+  <div class="answer" onclick="alert('Awkwrd banget bngst HHAHAH')">Awal kenalan</div>
+  <div class="answer" onclick="alert('Emang kapan yak?')">Chat-chat malem awal</div>
+
+  <p class="question">3. Siapa yang paling susah ngambeknya reda?</p>
+  <div class="answer" onclick="alert('Aku memang susah dirayu ya, HAHAHHA')">Emon</div>
+  <div class="answer" onclick="alert('Kamu? Kejadian langka itumah')">Morgan</div>
+  <div class="answer" onclick="alert('Kamu paling parah, WKWKKW')">Kita berdua</div>
+
+  <p class="question">4. Makanan favorit emon?</p>
+  <div class="answer" onclick="alert('Bohong, kamu aja ngira aku suka bubur')">Aku tahu jawabannya</div>
+  <div class="answer" onclick="alert('Anjay, dia lupa')">Ehm... nanti inget deh</div>
+  <p class="question">5. Emon kalau " capek " harus moy gimanain?</p>
+  <div class="answer" onclick="alert('Otw ga bales dm seumur hidup /angry')">Moy suruh istirahat/bobo</div>
+  <div class="answer" onclick="alert('Yah,, i like it')">Moy kasih hug + kiss</div>
+
+  <p class="question">6. Siapa yang lebih sering tiba-tiba bilang "aku sayang kamu"?</p>
+  <div class="answer" onclick="alert('Ngga ngerasa, tapi kayanya iya')">Emon</div>
+  <div class="answer" onclick="alert('Jarang bat buset')">Moy</div>
+
+  <p class="question">7. Siapa yang lebih gampang salting?</p>
+  <div class="answer" onclick="alert('Sori dek, gapernah tipu-tipu')">Emon, tapi sok-sokan ditahan</div>
+  <div class="answer" onclick="alert('Cuih lemah')">Moy dongg</div>
+  <div class="answer" onclick="alert('Bohong nih, padahal kamu')">Gak ada yg ngaku, padahal sama aja kita ber2 mh</div>
+
+  <p class="question">8. Siapa yang lebih posesif diem-diem?</p>
+  <div class="answer" onclick="alert('Ga pernah deck, gua mh santuy')">EMON!</div>
+  <div class="answer" onclick="alert('Galak inimah, uhuyy')">MOY!</div>
+
+  <p class="question">9. Moy paling gak tahan / ga suka kalau emon. . .</p>
+  <div class="answer" onclick="alert('Lagian situ yg buat gebrakan')">Ngambek diem</div>
+  <div class="answer" onclick="alert('Parah kalau sampe ga suka')">Manja mendadak</div>
+  <div class="answer" onclick="alert('MAAFIN YAk')">Ngetik pnjang terus bilang, yaudah deh</div>
+
+  <p class="question">10. Terakhir, kamu sebenernya sayang aku seberapa?</p>
+  <div class="answer" onclick="alert('Yahahah, ketauan deh siapa yg kecintaan disini')">Ngga pernah sayang</div>
+  <div class="answer" onclick="alert('Siap-siap, okk')">Jangankan sayang, gua aja cuma kasihan</div>
+</div>
+
+    <button class="btn" onclick="nextPage(4)">Lanjut</button>
+  </div>  <div class="container" id="page4">
+    <h1>Pesan dari moy buat emon</h1>
+    <form id="commentForm">
+      <textarea id="commentInput" placeholder="Tulis ucapan atau pesan kamu di sini..."></textarea>
+      <button class="btn" type="submit">Kirim</button>
+    </form>
+    <div class="comment-list" id="commentList"></div>
+    <button class="btn" onclick="nextPage(5)">Selesai</button>
+  </div>  <div class="container" id="page5">
+    <h1>Terima Kasih</h1>
+    <p>Thank you for being a part of my days. I’m really grateful to know you and to be this close with you. Two months might not seem like a long time, but everything we’ve shared already feels so meaningful. From just random chats, to deep talks, silly jokes, and even small arguments—we’ve been through quite a lot together.
+  <p>I’m happy I found someone who can turn ordinary moments into something I want to remember. Someone who can make me laugh but also make me pause and think. Sometimes annoying, but somehow still the one I miss when things are quiet. You don’t have to be there every second, but whenever you are, it feels like everything’s in place.</p>
+<p>I hope when we reach our 3rd mensive, we’ll still be like this—teasing each other, sharing weird thoughts, laughing over nonsense, and understanding each other even when words fail. I’m not asking for perfect, I just want us to stay us. Stay together, even when life gets messy.</p>
+
+So once again, thank you for showing up and sticking around. You really mean a lot to me</p>
+    <button class="btn" onclick="location.reload()">Ulangi</button>
+  </div>  <script>
+    function nextPage(n) {
+      document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
+      document.getElementById('page' + n).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    const form = document.getElementById('commentForm');
+    const input = document.getElementById('commentInput');
+    const list = document.getElementById('commentList');
+
+    form?.addEventListener('submit', e => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (text) {
+        const el = document.createElement('div');
+        el.className = 'comment-item';
+        el.textContent = text;
+        list.appendChild(el);
+        input.value = '';
+        const existing = JSON.parse(localStorage.getItem('mensiveComments') || '[]');
+        existing.push(text);
+        localStorage.setItem('mensiveComments', JSON.stringify(existing));
+      }
+    });
+
+    window.addEventListener('load', () => {
+      const stored = JSON.parse(localStorage.getItem('mensiveComments') || '[]');
+      stored.forEach(comment => {
+        const el = document.createElement('div');
+        el.className = 'comment-item';
+        el.textContent = comment;
+        list.appendChild(el);
+      });
+    });
+
+    document.querySelectorAll('.answer').forEach(answer => {
+      answer.addEventListener('click', () => {
+        answer.classList.add('clicked');
+        setTimeout(() => answer.classList.remove('clicked'), 500);
+      });
+    });
+
+    const bgm = document.getElementById('bgm');
+    document.addEventListener('click', () => {
+      if (bgm) {
+        bgm.muted = false;
+        bgm.play().catch(e => console.warn('Gagal memutar audio:', e));
+      }
+    }, { once: true });
+  </script></body>
+</html>
